@@ -1,3 +1,7 @@
+import {
+  BackgroundPatternDesktopSVG,
+  BackgroundPatternMobileSVG,
+} from "@/assets/icons";
 import Footer from "@/components/layout/footer";
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
@@ -27,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${workSans.variable} antialiased`}>
-      <body className="flex min-h-dvh w-full flex-col items-center justify-center bg-white sm:bg-stone-100 sm:px-19">
+      <body className="bg-light-pink flex min-h-dvh w-full flex-col items-center justify-center">
+        <BackgroundPatternMobileSVG className="absolute top-0 left-0 sm:hidden" />
+        <BackgroundPatternDesktopSVG className="hidden sm:block" />
         {children}
         <Footer />
       </body>

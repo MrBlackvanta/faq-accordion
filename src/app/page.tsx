@@ -1,21 +1,35 @@
-import omletteImage from "@/assets/images/image-omelette.webp";
+import { MinusSVG, PlusSVG, StarSVG } from "@/assets/icons";
 import { data } from "@/data/data";
-import Image from "next/image";
+import React from "react";
 
 export default function Home() {
   const { title, questions } = data;
+
   return (
-    <main className="text-preset-4 max-w-184 bg-white text-stone-600 sm:my-32 sm:rounded-3xl sm:p-10">
-      <Image
-        src={omletteImage}
-        alt={title}
-        width={1312}
-        height={600}
-        sizes="(min-width: 1024px) 41rem, (min-width: 768px) 33.5rem, 100vw"
-        fetchPriority="high"
-        loading="eager"
-        className="rounded-xl"
-      />
+    <main className="text-dark-purple z-1 grid flex-1 place-items-center px-6">
+      <article className="shadow-card border-light-gray w-full max-w-150 space-y-6 rounded-lg border bg-white p-6">
+        <div className="flex items-center gap-6">
+          <StarSVG className="size-6" />
+          <h1 className="display">{title}</h1>
+        </div>
+        <div className="space-y-5">
+          {questions.map((question, index) => (
+            <React.Fragment key={question.question}>
+              <details className="group overflow-hidden marker:content-none details-content:h-0 open:details-content:h-auto">
+                <summary className="flex items-center justify-between gap-6">
+                  <span className="title">{question.question}</span>
+                  <MinusSVG className="hidden size-7.5 shrink-0 group-open:block" />
+                  <PlusSVG className="size-7.5 shrink-0 group-open:hidden" />
+                </summary>
+                <p className="body text-pale-purple mt-6">{question.answer}</p>
+              </details>
+              {index < questions.length - 1 && (
+                <hr className="border-light-pink" />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </article>
     </main>
   );
 }
