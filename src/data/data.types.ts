@@ -1,7 +1,10 @@
 export type FAQData = {
   title: string;
-  questions: {
-    question: string;
-    answer: string;
-  }[];
-}
+  questions: Question[];
+};
+
+type Question = {
+  id: number;
+  question: string;
+  answer: string;
+};

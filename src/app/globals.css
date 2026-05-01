@@ -2,14 +2,17 @@
 
 @theme {
   --color-white: hsl(0, 0%, 100%);
+  --color-pink: hsl(281, 83%, 54%);
   --color-light-pink: hsl(275, 100%, 97%);
   --color-grayish-purple: hsl(292, 16%, 49%);
-  --color-pale-purple: hsl(291, 28%, 57%);
   --color-dark-purple: hsl(292, 42%, 14%);
 
   --color-light-gray: hsl(0, 0%, 89%);
 
   --font-work-sans: "Work Sans", sans-serif;
+
+  --text-display-sm: 2rem;
+  --text-display-lg: 3.5rem;
 }
 
 @layer base {
@@ -21,7 +24,7 @@
 }
 
 @utility display {
-  @apply text-[2rem] leading-none font-bold tracking-normal sm:text-[3.5rem];
+  @apply text-display-sm sm:text-display-lg leading-none font-bold tracking-normal;
 }
 
 @utility title {
@@ -32,16 +35,18 @@
   @apply text-sm leading-normal font-normal tracking-normal sm:text-base;
 }
 
+@utility focus-visible-ring {
+  @apply focus-visible:ring-pink focus-visible:ring-offset-pink focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
+}
+
 @utility footer-link {
-  @apply text-dark-purple rounded-xs font-bold;
-  @apply focus-visible:ring-dark-purple focus-visible:ring-offset-dark-purple focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
+  @apply text-dark-purple focus-visible-ring rounded-xs font-bold;
 }
 
 @utility shadow-card {
   box-shadow: 0px 32px 56px rgba(80, 0, 118, 0.1);
 }
 
-/* Target the new pseudo-element that contains the expandable content */
 details::details-content {
   transition:
     height 0.5s ease,

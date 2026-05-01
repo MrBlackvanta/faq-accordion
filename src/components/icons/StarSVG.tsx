@@ -2,8 +2,8 @@ export default function StarSVG(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 40 41"
       fill="none"
+      viewBox="0 0 40 41"
       {...props}
     >
       <path
